@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from "../core/service/data.service";
-import {SETTINGS} from "../core/settings/common.settings";
+import {DataService} from '../core/service/data.service';
+import {SETTINGS} from '../core/settings/common.settings';
+import {AlertService} from '../core/service/alert.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +11,8 @@ import {SETTINGS} from "../core/settings/common.settings";
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private alert: AlertService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -19,10 +22,13 @@ export class SignUpComponent implements OnInit {
 
     if (user.password === user.password2) {
       this.dataService.saveDetails(SETTINGS.ENDPOINTS.saveUser, user).subscribe(data => {
-        alert("ok");
+        this.alert.showSuccess('Your account has been successfully created.');
+        setTimeout(() => {
+          this.router.navigateByUrl('/sign-in');
+        }, 200);
       });
     } else {
-      alert("pass not match");
+      this.alert.showWarning('Your password and confirmation password do not match. [******] - has been ignored.');
     }
   }
 
