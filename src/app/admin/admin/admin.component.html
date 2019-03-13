@@ -1,0 +1,145 @@
+<div class="ui grid">
+  <div class="six wide column">
+    <div class="ui secondary segment">
+      <form class="ui mini form" #f="ngForm">
+        <h4 class="ui dividing header teal" style="text-align: center">User Information</h4>
+        <div class="field">
+          <label style="text-align: center">Name</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="name" placeholder="Name" [(ngModel)]="name" ngModel style="text-align: center">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label style="text-align: center">Contact</label>
+          <div class="field">
+            <div class="field">
+              <input type="tel" name="mobile" placeholder="Phone" [(ngModel)]="contact" ngModel
+                     style="text-align: center">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label style="text-align: center">Email</label>
+          <div class="field">
+            <div class="field">
+              <input type="email" name="email" placeholder="Email" [(ngModel)]="email" readonly ngModel
+                     style="text-align: center">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label style="text-align: center">Company/Business</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="company" placeholder="Company / Business" [(ngModel)]="company" ngModel
+                     style="text-align: center">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label style="text-align: center">Billing Address</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="address" placeholder="Street Address" [(ngModel)]="address" ngModel
+                     style="text-align: center">
+            </div>
+          </div>
+        </div>
+        <div class="field" style="margin-left: 6%;margin-right: 6%">
+          <button class="fluid ui mini teal button">Message</button>
+        </div>
+        <div class="field" style="margin-left: 6%;margin-right: 6%">
+          <button class="fluid ui mini google plus button" (click)="block(f.value)">Block User</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="two wide column"></div>
+  <div class="eight wide column">
+    <table class="ui teal table">
+      <thead>
+      <tr style="cursor: pointer">
+        <th hidden>ID</th>
+        <th>Company</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of list" class="mini">
+        <td hidden>{{user.id}}</td>
+        <td>{{user.company}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button class="button mini teal ui" (click)="updateUser(user);">View</button>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th colspan="5">
+          <div class="ui right floated pagination menu">
+            <a class="icon item" (click)="setPage('BACK');">
+              BACK <i class="left chevron icon"></i>
+            </a>
+
+            <a class="icon item" (click)="setPage('NEXT');">
+              NEXT <i class="right chevron icon"></i>
+            </a>
+          </div>
+        </th>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<div class="ui basic modal block">
+  <div class="ui icon header" style="color: red">
+    <i class="shield alternate icon"></i>
+    Security Alert
+  </div>
+  <div class="content">
+    <p>For a security reasons you can not block any user in this version.</p>
+    <p>We suggest you :</p>
+    <p>1 - disable all advertisements of this user.</p>
+    <p style="margin-top: -1%">then his/her advertisements will not available in public pages.</p>
+    <p style="margin-top: 1%">OR</p>
+    <p style="margin-top: 1%">Contact your developers and they will do that for you.</p>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      Cancel
+    </div>
+    <div class="ui green ok inverted button" (click)="developer();">
+      <i class="checkmark icon"></i>
+      Get Help
+    </div>
+  </div>
+</div>
+
+<div class="ui basic modal dev">
+  <div class="ui icon header" style="color: green">
+    <i class="shield alternate icon"></i>
+    Support
+  </div>
+  <div class="content" style="text-align: center">
+    <p>Hello {{logged}}</p>
+    <p>we informed that you are requesting to block someone in your system.</p>
+    <p>before complete your request we need to confirm this action.</p>
+    <p>we will reach you for the confirmation as soon as we can.</p>
+    <p>Thank You.</p>
+    <p><b>ZEEBO SYSTEM DEVELOPERS</b></p>
+  </div>
+  <div class="actions" style="text-align: center">
+    <div class="ui green ok inverted button">
+      <i class="thumbs up icon"></i>
+      Okey
+    </div>
+  </div>
+</div>

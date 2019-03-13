@@ -1,0 +1,150 @@
+<div class="ui grid">
+  <div class="six wide column">
+    <div class="ui secondary segment">
+      <form class="ui form mini" #f="ngForm">
+        <h4 class="ui dividing header teal" style="text-align: center">Advertisement</h4>
+        <div class="field" style="display: none;">
+          <label>ID</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="id" placeholder="ID" ngModel="{{id}}">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <select class="ui fluid dropdown" id="category" name="category" ngModel>
+            <option *ngFor="let category of catelist" value="{{category.category}}">
+              {{category.category}}
+            </option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Business Area</label>
+          <select class="ui fluid dropdown" id="city" name="city" ngModel>
+            <option *ngFor="let city of clist" value="{{city.city}}">
+              {{city.city}}
+            </option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Title</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="title" placeholder="Title" ngModel="{{title}}">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Opening Days</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="openingDates" placeholder="every week days / sunday only / every weekends"
+                     ngModel="{{openingdays}}">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Opening Hours</label>
+          <div class="field">
+            <div class="field">
+              <input name="openingHours" ngModel="{{openingHours}}" placeholder="07.00 AM To 10.00 PM" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Facebook Page Or Official Website</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="website" placeholder="official web site or facebook page" ngModel="{{website}}">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Google Map Location <a href="#" style="margin-left: 5%"> Need Help?</a></label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="map" placeholder="google map code" ngModel="{{map}}">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Select four images</label>
+          <div class="field">
+            <div class="field">
+              <input type="file" name="photo" multiple ng2FileSelect [uploader]="uploader" style="cursor: pointer"/>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success btn-s" style="cursor: pointer"
+                  (click)="uploader.uploadAll()"
+                  [disabled]="!uploader.getNotUploadedItems().length">
+            Set images
+          </button>
+        </div>
+        <div class="field">
+          <label>Tell us something about your business</label>
+          <div class="field">
+            <div class="field">
+              <div class="ui form">
+                <div class="field">
+                  <textarea name="description" ngModel="{{description}}"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input hidden="hidden" name="img1" ngModel="{{img1}}">
+        <input hidden="hidden" name="img2" ngModel="{{img2}}">
+        <input hidden="hidden" name="img3" ngModel="{{img3}}">
+        <input hidden="hidden" name="img4" ngModel="{{img4}}">
+        <div class="field">
+          <div style="text-align: center">
+            <div class="ui button teal" tabindex="0" style="width: 50%" (click)="submitAdvertisement(f.value)">Submit
+              Advertisement
+            </div>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+  </div>
+  <div class="ten wide column">
+    <div class="ui small images" style="text-align: center">
+      <img src="{{img1}}"
+           style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+      <img src="{{img2}}"
+           style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+      <img src="{{img3}}"
+           style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+      <img src="{{img4}}"
+           style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+    </div>
+    <table class="ui teal table">
+      <thead>
+      <tr style="cursor: pointer">
+        <th hidden>ID</th>
+        <th>Title</th>
+        <th>Created Date</th>
+        <th>Expired Date</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ad of ads" class="mini">
+        <td hidden>{{ad.id}}</td>
+        <td>{{ad.title}}</td>
+        <td>{{ad.created}}</td>
+        <td>{{ad.expired}}</td>
+        <td>{{ad.status}}</td>
+        <td>
+          <button class="button mini teal ui" (click)="getselectedAd(ad);">Update</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

@@ -1,0 +1,122 @@
+<div class="ui grid">
+  <div class="six wide column">
+    <div class="ui secondary segment">
+      <form class="ui form mini" #f="ngForm">
+        <h4 class="ui dividing header teal" style="text-align: center">Package</h4>
+        <div class="field" style="display: none;">
+          <label>ID</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="id" placeholder="ID" ngModel="{{id}}">
+            </div>
+          </div>
+        </div>
+        <div class="field" style="display: none;">
+          <label>ADID</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="ad" placeholder="ID" ngModel="{{selectedAd}}">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Package Name</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="name" placeholder="Package Name" ngModel="{{name}}">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Price</label>
+          <div class="field">
+            <div class="field">
+              <input type="number" name="price" placeholder="Package Price" ngModel="{{price}}">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Select an image</label>
+          <div class="field">
+            <div class="field">
+              <input type="file" name="photo" ng2FileSelect [uploader]="uploader" style="cursor: pointer"/>
+            </div>
+          </div>
+          <input hidden="hidden" name="img1" ngModel="{{img1}}">
+          <button type="button" class="btn btn-success btn-s" style="cursor: pointer"
+                  (click)="uploader.uploadAll()"
+                  [disabled]="!uploader.getNotUploadedItems().length">
+            Set image
+          </button>
+        </div>
+        <div class="field">
+          <label>Tell us something about your package</label>
+          <div class="field">
+            <div class="field">
+              <div class="ui form">
+                <div class="field">
+                  <textarea name="description" style="max-height: 95px" ngModel="{{desc}}"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input hidden="hidden" name="img1">
+        <div class="field">
+          <div style="text-align: center">
+            <div class="ui button teal" tabindex="0" style="width: 50%" (click)="submitPackage(f.value);">Submit
+              Package
+            </div>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+  </div>
+  <div class="ten wide column">
+    <div class="ui grid">
+      <div class="eight wide column">
+        <form class="ui form mini" #ads="ngForm">
+          <div class="field">
+            <label>Select Advertisement To Retrieve Packages</label>
+            <select class="ui fluid dropdown" name="advertisement" ngModel>
+              <option *ngFor="let ad of advertisements" value="{{ad.id}}" (click)="setPackages(ad);">
+                {{ad.title}}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="eight wide column">
+        <div class="ui small images" style="text-align: center; margin-top: 5px">
+          <img style="max-height: 200px; min-height: 200px; max-width: 300px;min-width: 300px;cursor: pointer"
+               src="{{img1}}">
+        </div>
+      </div>
+    </div>
+
+    <table class="ui teal table">
+      <thead>
+      <tr style="cursor: pointer">
+        <th hidden>ID</th>
+        <th>Package</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let pack of packages" class="mini">
+        <td hidden>{{pack.id}}</td>
+        <td>{{pack.name}}</td>
+        <td>{{pack.price}}</td>
+        <td>
+          <button class="button mini teal ui" (click)="getselectedPack(pack);">Update</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

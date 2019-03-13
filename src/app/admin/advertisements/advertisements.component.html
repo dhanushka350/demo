@@ -1,0 +1,137 @@
+<div class="ui grid">
+  <div class="four wide column">
+
+  </div>
+  <div class="eight wide column">
+    <div class="ui four item menu">
+      <a class="item" (click)="fillTable(0)">Pending</a>
+      <a class="item" (click)="fillTable(1)">Online</a>
+      <a class="item" (click)="fillTable(2)">Blocked</a>
+      <a class="item" (click)="fillTable(3)">All</a>
+    </div>
+  </div>
+  <div class="four wide column"></div>
+</div>
+
+<div class="ui divider"></div>
+
+<div class="ui grid">
+  <div class="eight wide column">
+    <div class="ui form mini">
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">Title</label>
+          <input type="text" placeholder="Title" ngModel="{{title}}">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">City</label>
+          <input type="text" placeholder="City" ngModel="{{city}}">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">Category</label>
+          <input type="text" placeholder="Category" ngModel="{{category}}">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">Open Days</label>
+          <input type="text" placeholder="Open Days" ngModel="{{openingdays}}">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">Opening Hours</label>
+          <input type="text" placeholder="Opening Hours" ngModel="{{openingHours}}">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">Website</label>
+          <input type="text" placeholder="Website" ngModel="{{website}}">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">Created Date</label>
+          <input type="text" placeholder="Create Date" ngModel="{{created}}">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">Expire Date</label>
+          <input type="text" placeholder="Expire Date" ngModel="{{expire}}">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="sixteen wide field">
+          <label style="width: 15%">Description</label>
+          <textarea name="description" ngModel="{{description}}"></textarea>
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="four wide field">
+          <img src="{{img1}}"
+               style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+        </div>
+        <div class="four wide field">
+          <img src="{{img2}}"
+               style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+        </div>
+        <div class="four wide field">
+          <img src="{{img3}}"
+               style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+        </div>
+        <div class="four wide field">
+          <img src="{{img4}}"
+               style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="eight wide column">
+    <table class="ui teal table">
+      <thead>
+      <tr style="cursor: pointer">
+        <th hidden>ID</th>
+        <th>Title</th>
+        <th>City</th>
+        <th>Category</th>
+        <th>Created</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ad of list" class="mini">
+        <td hidden>{{ad.id}}</td>
+        <td>{{ad.title}}</td>
+        <td>{{ad.city}}</td>
+        <td>{{ad.category}}</td>
+        <td>{{ad.created}}</td>
+        <td>
+          <button class="button mini teal ui" (click)="getselectedAd(ad);">View</button>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th colspan="5">
+          <div class="ui right floated pagination menu">
+            <a class="icon item" (click)="setPage('BACK');">
+              BACK <i class="left chevron icon"></i>
+            </a>
+
+            <a class="icon item" (click)="setPage('NEXT');">
+              NEXT <i class="right chevron icon"></i>
+            </a>
+          </div>
+        </th>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+
+</div>

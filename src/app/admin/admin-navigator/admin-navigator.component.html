@@ -1,0 +1,40 @@
+<div class="ui menu fixed" style="background-color: teal;">
+  <a class="active item" routerLink="/admin-dashboard" style="color: black; background-color: white; font-weight: bold">
+    ADMINISTRATOR
+  </a>
+  <a class="item" routerLink="/admin/accounts" style="color: white; font-weight: bold">
+    USER ACCOUNTS
+  </a>
+  <a class="item" routerLink="/admin/manage-advertisements" style="color: white; font-weight: bold">
+    ADVERTISEMENTS
+  </a>
+  <a class="item" routerLink="/user-dashboard/packages" style="color: white; font-weight: bold">
+    PACKAGES
+  </a>
+  <a class="item" style="color: white; font-weight: bold">
+    MESSAGES
+  </a>
+  <div class="right menu">
+    <a class="item" style="color: white; font-weight: bold" (click)="logout();">SIGN OUT</a>
+    <a class="item" style="color: white; font-weight: bold">HELP</a>
+  </div>
+</div>
+
+
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="sign-out icon" style="color: red"></i>
+    Thank You {{user}}
+  </div>
+  <div class="content" style="text-align: center; font-weight: bold">
+    <p>You will returned to the login page</p>
+    <p>Have a nice day!</p>
+  </div>
+  <div class="actions" style="text-align: center">
+    <div class="ui red ok inverted button" (click)="logoutProceed();">
+      Exit
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,77 @@
+<div class="ui grid">
+  <div class="four wide column"></div>
+
+  <div class="eight wide column">
+    <div class="ui secondary segment">
+      <form class="ui form" #f="ngForm">
+        <h4 class="ui dividing header teal" style="text-align: center">User Information</h4>
+        <div class="field">
+          <label>Name</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="name" placeholder="Name" [(ngModel)]="name" ngModel>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Contact</label>
+          <div class="field">
+            <div class="field">
+              <input type="tel" name="mobile" placeholder="Phone" [(ngModel)]="contact" ngModel>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <div class="field">
+            <div class="field">
+              <input type="email" name="email" placeholder="Email" [(ngModel)]="email" readonly ngModel>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Company/Business</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="company" placeholder="Company / Business" [(ngModel)]="company" ngModel>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Billing Address</label>
+          <div class="field">
+            <div class="field">
+              <input type="text" name="address" placeholder="Street Address" [(ngModel)]="address" ngModel>
+            </div>
+          </div>
+        </div>
+      </form>
+      <br>
+      <div style="text-align: center">
+        <div class="ui button teal" tabindex="0" (click)="submitData();">Update</div>
+      </div>
+    </div>
+  </div>
+  <div class="four wide column"></div>
+</div>
+
+
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="shield alternate icon" style="color: red"></i>
+    Please Confirm
+  </div>
+  <div class="content" style="text-align: center;font-weight: bold">
+    <p>Do You Really Want To Update Account Details?</p>
+  </div>
+  <div class="actions" style="text-align: center">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button" (click)="updateAccount(f.value);">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>
