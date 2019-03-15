@@ -1,99 +1,117 @@
 <div class="ui grid">
   <div class="four wide column">
-
+    <div class="two wide column" *ngIf="activate">
+      <div class="ui one item menu mini">
+        <a class="item" (click)="updateAdvertisement(1)"
+           style="background-color: teal;color: white;"><b>Activate</b></a>
+      </div>
+    </div>
+    <div class="two wide column" *ngIf="block">
+      <div class="ui one item menu mini">
+        <a class="item" (click)="updateAdvertisement(2)"
+           style="background-color: red;color: white;"><b>Block</b></a>
+      </div>
+    </div>
   </div>
   <div class="eight wide column">
-    <div class="ui four item menu">
+    <div class="ui three item menu">
       <a class="item" (click)="fillTable(0)">Pending</a>
       <a class="item" (click)="fillTable(1)">Online</a>
       <a class="item" (click)="fillTable(2)">Blocked</a>
-      <a class="item" (click)="fillTable(3)">All</a>
     </div>
   </div>
-  <div class="four wide column"></div>
+  <div class="one wide column"></div>
+  <div class="two wide column" *ngIf="pending">
+    <div class="ui one item menu mini" (click)="confirmAllActivateAction();">
+      <a class="item" style="background-color: red;color: white;"><b>Activate All</b></a>
+    </div>
+  </div>
 </div>
 
 <div class="ui divider"></div>
 
 <div class="ui grid">
   <div class="eight wide column">
-    <div class="ui form mini">
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">Title</label>
-          <input type="text" placeholder="Title" ngModel="{{title}}">
+    <div class="ui secondary segment teal">
+      <h4 style="text-align: center">{{advertisement}}</h4>
+      <div class="ui form mini">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">Title</label>
+            <input type="text" placeholder="Title" ngModel="{{title}}">
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">City</label>
-          <input type="text" placeholder="City" ngModel="{{city}}">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">City</label>
+            <input type="text" placeholder="City" ngModel="{{city}}">
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">Category</label>
-          <input type="text" placeholder="Category" ngModel="{{category}}">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">Category</label>
+            <input type="text" placeholder="Category" ngModel="{{category}}">
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">Open Days</label>
-          <input type="text" placeholder="Open Days" ngModel="{{openingdays}}">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">Open Days</label>
+            <input type="text" placeholder="Open Days" ngModel="{{openingdays}}">
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">Opening Hours</label>
-          <input type="text" placeholder="Opening Hours" ngModel="{{openingHours}}">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">Opening Hours</label>
+            <input type="text" placeholder="Opening Hours" ngModel="{{openingHours}}">
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">Website</label>
-          <input type="text" placeholder="Website" ngModel="{{website}}">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">Website</label>
+            <input type="text" placeholder="Website" ngModel="{{website}}">
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">Created Date</label>
-          <input type="text" placeholder="Create Date" ngModel="{{created}}">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">Created Date</label>
+            <input type="text" placeholder="Create Date" ngModel="{{created}}">
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">Expire Date</label>
-          <input type="text" placeholder="Expire Date" ngModel="{{expire}}">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">Expire Date</label>
+            <input type="text" placeholder="Expire Date" ngModel="{{expire}}">
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="sixteen wide field">
-          <label style="width: 15%">Description</label>
-          <textarea name="description" ngModel="{{description}}"></textarea>
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <label style="width: 15%">Description</label>
+            <textarea name="description" ngModel="{{description}}"></textarea>
+          </div>
         </div>
-      </div>
-      <div class="inline fields">
-        <div class="four wide field">
-          <img src="{{img1}}"
-               style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
-        </div>
-        <div class="four wide field">
-          <img src="{{img2}}"
-               style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
-        </div>
-        <div class="four wide field">
-          <img src="{{img3}}"
-               style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
-        </div>
-        <div class="four wide field">
-          <img src="{{img4}}"
-               style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+        <div class="inline fields">
+          <div class="four wide field">
+            <img src="{{img1}}"
+                 style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+          </div>
+          <div class="four wide field">
+            <img src="{{img2}}"
+                 style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+          </div>
+          <div class="four wide field">
+            <img src="{{img3}}"
+                 style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+          </div>
+          <div class="four wide field">
+            <img src="{{img4}}"
+                 style="max-height: 100px; min-height: 100px; max-width: 150px;min-width: 150px;cursor: pointer">
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="eight wide column">
-    <table class="ui teal table">
+    <table class="ui teal table mini">
       <thead>
       <tr style="cursor: pointer">
         <th hidden>ID</th>
@@ -133,5 +151,25 @@
       </tfoot>
     </table>
   </div>
+</div>
 
+
+<div class="ui basic modal activate all pending" style="text-align: center">
+  <div class="ui icon header">
+    <i class="shield alternate icon"></i>
+    Activate All ?
+  </div>
+  <div class="content">
+    <p>Are you sure you want to activate all pending advertisements without review?</p>
+  </div>
+  <div class="actions" style="text-align: center">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button" (click)="activateAllPending();">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
 </div>

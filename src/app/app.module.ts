@@ -26,7 +26,7 @@ import {AdminComponent} from './admin/admin/admin.component';
 import {AdminHomeComponent} from './admin/admin-home/admin-home.component';
 import {AdminNavigatorComponent} from './admin/admin-navigator/admin-navigator.component';
 import {AdminService} from './core/service/admin.service';
-import { AdvertisementsComponent } from './admin/advertisements/advertisements.component';
+import {AdvertisementsComponent} from './admin/advertisements/advertisements.component';
 
 
 @NgModule({
@@ -47,12 +47,12 @@ import { AdvertisementsComponent } from './admin/advertisements/advertisements.c
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
     NgxWebstorageModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [DataService, AlertService, AdminService, UserService, CommonService, AdvertisementService, {
     provide: HTTP_INTERCEPTORS,

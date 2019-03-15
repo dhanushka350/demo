@@ -38,6 +38,14 @@ export class SETTINGS {
       url: SETTINGS.HTTP_PREFIX + '/api/administrator/advertisements',
       type: 'GET'
     },
+    activateAllPending: {
+      url: SETTINGS.HTTP_PREFIX + '/api/administrator/activate/all/pending',
+      type: 'GET'
+    },
+    updateAdvertisementStatus: {
+      url: SETTINGS.HTTP_PREFIX + '/api/administrator/update/advertisement/status',
+      type: 'GET'
+    },
     saveAdvertisement: {
       url: SETTINGS.HTTP_PREFIX + '/api/advertisement/create',
       type: 'POST'
